@@ -22,7 +22,7 @@ unset key
 set style arrow 1 size character 0.5,20 filled heads linewidth 2
 
 ##############################ファイルのPath
-f = "../dat/UVW_T.csv"
+f = "../dat/0000.CSV"
 
 set xr[0:20]
 set yr[-0.3:0.3]
