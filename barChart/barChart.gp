@@ -20,23 +20,23 @@ set grid
 set key
 set style arrow 1 size character 0.5,20 filled heads linewidth 2
 
-set boxwidth 1 relative
+set boxwidth .8 relative
 set style fill solid border lc rgb "black"
 
 ##############################ファイルのPath
-f = "../dat/9.375degonly_T_fft.csv"
+f = "../dat/実験/0015.CSV"
 
-set xr[-1:5]
-set yr[0:0.2]
+set xr[0:300]
+set yr[0:1.1]
 set format x "%.f"
-set format y "%.2f"
+set format y "%.1f"
 set xtics nomirror
 
 unset mxtics 
-set ytics 0.05
-set mytics 5
-set xlabel "Mechanic angle {/Symbol:Italic q}_m [degree]" offset 0,0
-set ylabel "Torque amplitude T [Nm]" offset 0,0
+set ytics 0.2
+set mytics 2
+set xlabel "Frequency f [Hz]" offset 0,0
+set ylabel "Torque amplitude {/Times:Italic T} [a.u.]" offset 0,0
 
 set ylabel offset 0,0
 
@@ -44,8 +44,7 @@ set ylabel offset 0,0
 #plot f every 1::16 using (($1-TIME_OFFSET)*1000):($0==TIME_OFFSET ? (old = ((Ts*$2 + Tc*$2)/(Ts + Tc)), old) : (old = ((Ts*$2 + Tc*old)/(Ts + Tc)), old)) with line lt -1
 
 
-plot f using 2:xtic(1) with histogram lw 2 lc rgb "gray" title "Conventional",\
-     f using 3 with histogram lw 2 lc rgb "red" title "Proposed"
+plot f every 10::0:1 using ($0*50):(10**($9/20.0)) with boxes lw 2 lc rgb "gray" title "Conventional"
      #f using ($1*1000): with line lt -1 lw 2 title "Proposed"
 ##############################余白の設定
 # N = 4                           # グラフの数
