@@ -50,8 +50,8 @@ plot_No = 1
 
 set lmargin screen lms
 set rmargin screen rms
-set tmargin screen tms
-set bmargin screen tms - hms
+set tmargin screen tms - (plot_No-1)*(hms+sms)
+set bmargin screen tms - (plot_No*hms + (plot_No-1)*sms)
 
 # 軸のレンジ設定
 set xr[-pi:pi]
